@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <!-- maximum-scale=1: iPhone không tự phóng to khi bấm vào ô nhập (đăng nhập xong bị zoom tràn màn hình). -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<title>Giải cầu lông – Sun Badminton</title>
+<title>App Minigame – Sun Badminton</title>
 <meta name="theme-color" content="#174197">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Cầu lông">
+<meta name="apple-mobile-web-app-title" content="Minigame">
 <style>
   :root { --navy: #174197; --bg: #f4f7fb; --txt: #1e293b; --muted: #64748b; }
   *, *::before, *::after { box-sizing: border-box; }
@@ -36,12 +36,12 @@
 </style>
 </head>
 <body>
-<iframe id="app" title="Giải cầu lông" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
+<iframe id="app" title="App Minigame" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
 
 <div class="cover" id="loading">
   <img class="logo" src="icon-192.png" alt="">
   <div class="spin"></div>
-  <p>Đang mở giải cầu lông…</p>
+  <p>Đang mở App Minigame…</p>
 </div>
 
 <div class="cover" id="blocked" hidden>
@@ -60,11 +60,11 @@
 <div class="cover" id="setup" hidden>
   <h1>Chưa cài đường link ứng dụng</h1>
   <p>Mở file <code>index.html</code> trên GitHub, sửa dòng <code>APP_URL</code> thành đường link
-     <code>…/exec</code> của Web App giải cầu lông rồi bấm Commit.</p>
+     <code>…/exec</code> của Web App Minigame rồi bấm Commit.</p>
 </div>
 
 <script>
-  // Đường link /exec của Web App Giải cầu lông (Apps Script › Triển khai › Quản lý các lượt triển khai).
+  // Đường link /exec của Web App Minigame (Apps Script › Triển khai › Quản lý các lượt triển khai).
   // Chỉ phải sửa khi tạo "Lượt triển khai mới" (link đổi); triển khai "Phiên bản mới" thì link giữ nguyên.
   const APP_URL = 'https://script.google.com/macros/s/AKfycbwmm99z_PFzgy5umJKLuNwMLA-lzCELj83OSLr-WdtQpZz3270cZ_HoW1jAQQTQ8cTjcg/exec';
 
@@ -97,7 +97,7 @@
     try { host = new URL(e.origin).hostname; } catch (err) { return; }
     if (!/\.googleusercontent\.com$/.test(host)) return;   // chỉ nói chuyện với khung app của Google
     const d = e.data || {};
-    // App cầu lông (Index.html) gửi tín hiệu này khi đã tải xong trong khung.
+    // App Minigame (Index.html) gửi tín hiệu này khi đã tải xong trong khung.
     if (d.type === 'caulong-ready') {
       ready = true; clearTimeout(timer);
       $('loading').hidden = true; $('blocked').hidden = true;

@@ -1,6 +1,6 @@
 {
-  "name": "Giải cầu lông – Sun Badminton",
-  "short_name": "Cầu lông",
+  "name": "App Minigame – Sun Badminton",
+  "short_name": "Minigame",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
